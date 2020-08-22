@@ -1,0 +1,221 @@
+body
+	{
+	width: 75ex;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'hoefler text', georgia, serif;
+	text-rendering: optimizeLegibility;
+	}
+
+.hide { visibility: hidden; }
+
+:link, :visited
+	{
+	text-decoration: none;
+	}
+:link:hover, :visited:hover
+	{
+	text-decoration: underline;
+	}
+
+h1, h2, h3
+	{
+	margin-top: 1em;
+	margin-bottom: 0;
+	padding: 0;
+	}
+
+h1 { font-size: 200%; }
+h2 { font-size: 150%; }
+h3 { font-size: 133%; }
+
+cite.self
+	{
+	font-style: normal;
+	font-variant: small-caps;
+	}
+
+code 
+	{ 
+	border: thin solid #CCC;
+	border-radius: 0.25em;
+	background: #F8F8F8;
+	color: #048;
+	}
+	
+pre
+	{
+	border: thin solid #CCC;
+	border-radius: 0.25em;
+	overflow: scroll;
+	padding: 1ex;
+	background: #F8F8F8;
+	color: #048;
+	}
+
+pre code
+	{
+	border: none;
+	}
+	
+code .kw { font-weight: bold; }
+code .dt { font-style: italic; }
+
+.timestamp
+	{
+	font-size: 80%;
+	color: #888;
+	}
+
+/* lists with titled elements */
+
+.titlelist
+	{
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+	}
+.titlelist li
+	{
+	margin-left: 0;
+	padding-left: 2.5em;
+	text-indent: -2.5em;
+	}
+
+.titlelist .title
+	{
+	font-weight: bold;
+	}
+	
+.titlelist .entitled
+	{
+	text-indent: 0;
+	}
+
+.titlelist .entitled > *:first-child
+	{
+	margin-top: 0;
+	}
+
+.nocaps
+	{
+	text-transform: none;
+	font-variant: normal;
+	}
+
+.header
+	{
+	border-bottom: thin solid black;
+	}
+.header .site
+	{
+	border-bottom: thin solid black;
+	font-size: 400%;
+	margin-top: 1em;
+	}
+.header .site :link, .header .site :visited
+	{
+	color: black;
+	}
+
+.header .prev
+	{
+	float: left;
+	padding-right: 1em;
+	display: block;
+	}
+	
+.header .next
+	{
+	float: right;
+	display: block;
+	padding-left: 1em;
+	}
+
+.header .motto
+	{
+	text-transform: lowercase;
+	font-variant: small-caps;
+	}
+
+.cover
+	{
+	display: table;
+	margin: 1em auto;
+	}
+.cover .caption
+	{
+	font-style: italic;
+	}
+
+.figure
+	{
+	display: table;
+	margin: 1em auto;
+	}
+.figure .caption
+	{
+	font-style: italic;
+	font-size: 80%;
+	margin: 0;
+	}
+
+.pubinfo
+	{
+	/*
+	text-transform: uppercase;
+	font-size: 80%;
+	*/
+	text-transform: lowercase;
+	font-variant: small-caps;
+	color: #888;
+	}
+
+.pubinfo p
+	{
+	margin: 0;
+	}
+	
+.summary, .aside
+	{
+	margin-top: 1em;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size: 80%;
+	border: thin solid #888;
+	border-radius: 0.5ex;
+	}
+
+.content
+	{
+	border-bottom: thin solid black;
+	margin-bottom: 1em;
+	}
+
+.footer
+	{
+	text-transform: lowercase;
+	font-variant: small-caps;
+/*	text-transform: uppercase;
+	font-size: 80%;
+	*/
+	}
+.footer, .footer :link, .footer :visited
+	{
+	color: #888;
+	}
+.footer .nav, .footer .rights
+	{
+	text-align: center;
+	}
+.footer .archive
+	{
+	/*
+	text-transform: none;
+	*/
+	display: table;
+	margin: 1em auto;
+	}

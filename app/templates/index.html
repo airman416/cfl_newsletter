@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+
+<head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type'>
+    </meta>
+    <title>Newsletter - CFL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/front.css') }}">
+    <meta content='Dave Menendez' name='author'>
+</head>
+
+<body>
+    <div class='header'>
+        <h1 class='site'>CFL Newsletter</h1>
+        <div class='motto'>CFL Information</div>
+    </div>
+    <div class='content'>
+        <div class='col2'>
+            <h2>Recent posts</h2>
+            <ol class='titlelist'>
+                {% for post in posts %}
+                <li><span class='title'><a href={{ post.date }}>{{ post.title }}</a></span>
+                    <div class='entitled'>
+                        <p>
+                            {{ post.body }}<small
+                                class='timestamp'> ({{ post.date }})</small>
+                        </p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class='col1'>
+
+            <h2>Elsewhere</h2>
+
+            <ul class='dir'>
+                {% for contact in contacts %}
+                    <li><a href={{ contact.url }}>{{ contact.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <h2>Topics</h2>
+
+            <ul class='dir'>
+                {% for topic in topics %}
+                    <li><a href={{ topic }}>{{ topic }}</a></li>
+                {% endfor %}
+            </ul>
+            
+        </div>
+        <div class='colfoot'>
+            <p><cite class='self'>CFL Newsletter</cite> was created by Armaan Agrawal for CFl.</a>, a
+                group teaching people how to code (among other things).</p>
+        </div>
+    </div>
+    <div class='footer'>
+        <div class='rights'>Copyright 2020 Armaan Agrawal</div>
+    </div>
+</body>
+
+</html>

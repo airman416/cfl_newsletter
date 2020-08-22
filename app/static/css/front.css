@@ -1,0 +1,38 @@
+.dir
+	{
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+	}
+.dir li
+	{
+	padding-left: 1em;
+	text-indent: -1em;
+	}	
+	
+.col1
+	{
+	width: 25%;
+	text-align: right;
+	}
+.col1 h2
+	{
+	font-size: 100%;
+	}
+	
+.col2
+	{
+	width: 70%;
+	padding-left: 5%;
+	float: right;
+	}
+.col2 h2
+	{
+	padding-top: 0;
+	margin-top: 0;
+	}
+	
+.colfoot
+	{
+	clear: both;
+	}
