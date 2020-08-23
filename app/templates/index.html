@@ -23,7 +23,7 @@
                 <li><span class='title'><a href={{ post.date }}>{{ post.title }}</a></span>
                     <div class='entitled'>
                         <p>
-                            {{ post.body }}<small
+                            {{ post.body|safe }}<small
                                 class='timestamp'> ({{ post.date }})</small>
                         </p>
                     </div>
@@ -56,7 +56,11 @@
         </div>
     </div>
     <div class='footer'>
-        <div class='rights'>Copyright 2020 Armaan Agrawal</div>
+        {% if current_user.is_anonymous %}
+        <div class='rights'>Copyright 2020 <a href="/login">Armaan Agrawal</a></div>
+        {% else %}
+        <div class='rights'>Copyright 2020 <a href="/logout">Armaan Agrawal</a></div>
+        {% endif %}
     </div>
 </body>
 

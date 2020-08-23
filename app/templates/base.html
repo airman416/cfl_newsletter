@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+
+<head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type'>
+    </meta>
+    <title>CFL</title>
+    <meta content='Armaan Agrawal' name='author'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/front.css') }}">
+</head>
+
+<body>
+    <div class='header'>
+        <div class='site'><a href='../'>CFL Newsletter</a></div>
+        <div class='motto'>CFL Information</div>
+    </div>
+
+    {% block content %} {% endblock %}
+
+    </div>
+    <div class='footer'>
+        <div class='rights'>Copyright 2020 Armaan Agrawal</div>
+    </div>
+</body>
+
+</html>
