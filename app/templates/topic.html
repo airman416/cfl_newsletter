@@ -17,21 +17,17 @@
     </div>
     <div class='content'>
         <div class='col2'>
-            <h2>Recent posts
-            {% if current_user.is_anonymous %} {% else %}
-            <a href="{{ url_for('add') }}"><small class='timestamp' style="font-size:52%; font-weight:normal">(Add post.)</small></a>
-            {% endif %}
-            </h2>
+            <h2>{{ topic }} directory</h2>
             <ol class='titlelist'>
                 {% for post in posts %}
-                <li><span class='title'><a href="{{ url_for('id', id=post.id) }}">{{ post.title }}</a></span>
+                <li><span class='title'><a href={{ post.id }}>{{ post.title|safe }}</a></span>
                     <div class='entitled'>
                         <p>
                             {{ post.summary|safe }}
                             <small class='timestamp'> ({{ post.timestamp.year }})</small>
                             {% if current_user.is_anonymous %}
                             {% else %}
-                            <a href="{{ url_for('delete', id=post.id) }}"><small class='timestamp'>Delete post.</small></a>
+                            <a href="{{ url_for('add') }}"><small class='timestamp'>Add post.</small></a>
                             {% endif %}
                         </p>
                     </div>
@@ -49,7 +45,7 @@
                 {% endfor %}
             </ul>
 
-            <h2>Topics</h2>
+            <h2>Other topics</h2>
 
             <ul class='dir'>
                 {% for topic in topics %}
@@ -59,7 +55,7 @@
             
         </div>
         <div class='colfoot'>
-            <p><cite class='self'>CFL Newsletter</cite> was created for CFL</a>, a
+            <p><cite class='self'>CFL Newsletter</cite> was created by Armaan Agrawal for CFL</a>, a
                 group teaching people how to code (among other things).</p>
         </div>
     </div>

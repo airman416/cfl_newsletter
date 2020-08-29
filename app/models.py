@@ -24,9 +24,12 @@ class User(UserMixin, db.Model):
     
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
+    title = db.Column(db.String(30))
+    summary = db.Column(db.String(100))
+    body = db.Column(db.String(1000))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    topic = db.Column(db.String(30))
     
     def __repr__(self):
         return '<Post {}>'.format(self.body)

@@ -1,10 +1,20 @@
-from app import app
-from flask import render_template, request, url_for, redirect
+from app import app, db
+from flask import render_template, request, url_for, redirect, flash, session
 
-from app.forms import LoginForm
-from flask_login import current_user, login_user, logout_user
-from app.models import User
+from app.forms import LoginForm, PostForm
+from flask_login import current_user, login_user, logout_user, login_required
+from app.models import User, Post
 from werkzeug.urls import url_parse
+
+query = Post.query.distinct(Post.topic).group_by(Post.topic).all()
+topics = []
+    
+for post in query:
+    print(post)
+    if post.topic in topics:
+        continue
+    else:
+        topics.append(post.topic)
 
 @app.route('/')
 @app.route('/index')
@@ -16,25 +26,9 @@ def index():
         }
     ]
     
-    posts = [
-        {
-            'author': {'username': 'airman416'},
-            'date': '2020',
-            'title': 'First Post',
-            'body': 'First post on the new CFL Newsletter website! <br> This is some sample <code>code</code>',
-            'topic': 'Python'
-        }
-    ]
-    
-    topics = []
-    for post in posts:
-        print(post)
-        if post['topic'] in topics:
-            continue
-        else:
-            topics.append(post['topic'])
+    posts = Post.query.order_by(Post.timestamp.desc()).limit(8).all()
         
-    return render_template('index.html', title='Home', posts=posts, contacts=contacts, topics=topics)
+    return render_template('index.html', posts=posts, contacts=contacts, topics=topics)
 
 
 # @app.route('/admin', methods=['GET', 'POST'])
@@ -67,6 +61,56 @@ def login():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/add', methods=['GET', 'POST'])
+@login_required
+def add():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title = form.title.data, summary=form.summary.data, body=form.post.data, user_id=current_user.username, topic=form.topic.data)
+        db.session.add(post)
+        db.session.commit()
+        flash("Live post!")
+        return redirect(url_for('index'))
+    else:
+        print("INVALID")
+        print(form.title.data, form.summary.data, form.post.data, current_user.username, form.topic.data)
+        print(form.post.errors)
+    return render_template('add.html', form=form)
+
+
+@app.route('/<topic>')
+def topic(topic):
+    contacts = [
+        {
+            'name': 'GitHub',
+            'url': 'https://github.com/KIST-CFL'
+        }
+    ]
+    
+    posts = Post.query.order_by(Post.timestamp.desc()).filter_by(topic=topic).all()
+    
+    return render_template('topic.html', posts=posts, contacts=contacts, topics=topics, topic=topic)
+
+
+@app.route('/post/<id>')
+def id(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    
+    return render_template('post.html', post=post)
+
+
+@app.route('/delete/<id>')
+@login_required
+def delete(id):
+    post = Post.query.filter_by(id=id).first_or_404()
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('index'))
+    
+    

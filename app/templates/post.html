@@ -1,38 +1,23 @@
-<h1>INSERT TITLE</h1>
-    <div class='pubinfo'>
-        <div class='byline'>By <a href='../../about/dave.html'>Dave Menendez</a></div>
-        <div class='date'>Monday, June 10, 2019, at 3:44 PM</div>
+{% extends "base.html" %}
 
-    </div>
-    <div class='summary'>
-        <p><strong>Summary:</strong>
-            Automatically downloading pre-ordered games makes technical sense, but it’s
-            frustrating to have something and not be able to use it.</p>
-    </div>
-    <div class='content'>
+{% block content %}
+<h1>{{ post.title|safe }}</h1>
 
-        <p>It’s usually a bad idea to pre-order video games, since you are buying something without any real way of
-            knowing whether it’s any good, but <em>Super Mario Maker 2</em> seems like a safe enough bet that I went
-            ahead and did it. I had vaguely recalled that the Switch (and other consoles, I assume) will pre-download
-            pre-ordered games so that you have them ready the minute they're released. This makes a lot of sense, since
-            otherwise you would get a crush of people trying to download the game all at the same time.<sup><a
-                    href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></p>
-        <p>What I did not expect was for the Switch to put <em>Super Mario Maker 2</em> right there in the console menu.
-            It hasn’t been released yet, so you can’t open it. It just sits there, saying “Yeah, I’m already on your
-            machine, but you can’t play me until Nintendo says so.”</p>
-        <p>Again, I can see the logic here. The main menu on the Switch is also how you manage software, so you wouldn’t
-            be able to delete it or move it to external storage if it didn’t have an icon. That’s fine. It just feels
-            like having an unwrapped Christmas present sitting under the tree.</p>
-        <p>Actually, that might be a good idea for Nintendo: if a game is downloaded on the Switch, but not yet
-            released, draw a ribbon or something over the icon. That gives you a way to manage the software, provides a
-            visual cue that it isn’t available yet, and adds a nice festive air.</p>
-        <div class="footnotes">
-            <hr />
-            <ol>
-                <li id="fn1">
-                    <p>There is the issue of day-one patches, where you get the game and immediately have to download an
-                        update before you can actually play it, but it’s certainly possible to minimize or even
-                        eliminate that.<a href="#fnref1">↩</a></p>
-                </li>
-            </ol>
-        </div>
+<div class='pubinfo'>
+    <div class='byline'>By {{ post.user_id }}</div>
+    <div class='date'>{{ post.timestamp.year }}</div>
+
+</div>
+<div class='summary'>
+    <p><strong>Summary:</strong>
+        {{ post.summary|safe }}</p>
+</div>
+<div class='content'>
+
+    <p>{{ post.body|safe }}</p>
+    <div class="footnotes">
+        
+    </div>
+</div>
+
+{% endblock %}
