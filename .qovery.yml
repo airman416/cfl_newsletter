@@ -1,0 +1,15 @@
+---
+application:
+  name: "cfl-newsletter"
+  project: "test1"
+  organization: "QoveryCommunity"
+databases:
+- type: "POSTGRESQL"
+  name: "app"
+  version: "11"
+routers:
+- name: "main-cfl-newsletter"
+  routes:
+  - application_name: "cfl-newsletter"
+    paths:
+    - "/*"
